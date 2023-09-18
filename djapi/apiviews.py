@@ -5,14 +5,20 @@ from .serializers import CountrySerializer, AddressSerializer, AuthorSerializer,
 from rest_framework import status
 from rest_framework.response import Response
 
+from rest_framework.pagination import PageNumberPagination
+
 
 class CountryList(generics.ListCreateAPIView):
+    # 1. Access all data from table (all())
+    # 2. bind with serializer (many=True)
+    # 3. return data (Response)
     permission_classes = (permissions.IsAuthenticated,)
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
 
 
 class CountryDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.AllowAny, )
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
 
@@ -32,9 +38,13 @@ class AddressDetail(generics.RetrieveUpdateDestroyAPIView):
 #     serializer_class = AuthorSerializer
 class AuthorList(APIView):
     def get(self, request):
+        page = self.request.query_params.get('page')
         authors = Author.objects.all()
         serializer = AuthorSerializer(authors, many=True)
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginated_data = paginator.paginate_queryset(serializer.data, request)
+        return paginator.get_paginated_response(paginated_data)
+        # return Response(serializer.data)
 
     def post(self, request):
         address = Address.objects.get(id=request.data['address'])
@@ -55,7 +65,10 @@ class BookList(APIView):
     def get(self, request):
         books = Book.objects.all()
         serializer = BookSerializer(books, many=True)
-        return Response(serializer.data)
+        # return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginated_data = paginator.paginate_queryset(serializer.data, request)
+        return paginator.get_paginated_response(paginated_data)
 
     def post(self, request):
         author = Author.objects.get(id=request.data['author'])
