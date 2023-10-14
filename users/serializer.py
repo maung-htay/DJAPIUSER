@@ -1,28 +1,22 @@
 from rest_framework import serializers
 from django.contrib.auth.models import Group, Permission
 from .models import UserProfile
-# from django.contrib.auth import get_user_model
-
-# UserProfile = get_user_model()
 
 
-# class GroupSerializer(serializers.ModelSerializer):
-
-#     class Meta:
-#         model = UserProfile.groups.through  # Access the ManyToMany through relationship
-#         fields = ['group']
+class GroupNameField(serializers.RelatedField):
+    def to_representation(self, value):
+        return value.name
 
 
-# class PermissionSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserProfile.user_permissions.related.model
-#         fields = ['name']
+class PermissionNameField(serializers.RelatedField):
+    def to_representation(self, value):
+        return value.name
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-
-    # groups = GroupSerializer(many=True, read_only=True)
-    # user_permissions = PermissionSerializer(many=True, read_only=True)
+    groups = GroupNameField(many=True, queryset=Group.objects.all())
+    user_permissions = PermissionNameField(
+        many=True, queryset=Permission.objects.all())
 
     class Meta:
         model = UserProfile
