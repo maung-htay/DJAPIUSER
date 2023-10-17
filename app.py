@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from flask_smorest import Api
+from flask_migrate import Migrate
 import os
 
 # jwt
@@ -30,6 +31,7 @@ def create_app(db_url=None):
         "DATABASE_URL", "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
+    migrate = Migrate(app, db)
     api = Api(app)
     
     app.config["JWT_SECRET_KEY"] = "jose"
@@ -89,9 +91,9 @@ def create_app(db_url=None):
             401,
         )    
            
-
-    with app.app_context():
-        db.create_all()
+    # we use migration , we don't need to create tables manually
+    # with app.app_context():
+    #     db.create_all()
 
     api.register_blueprint(StoreBlueprint)
     api.register_blueprint(ItemBlueprint)
