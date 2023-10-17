@@ -1,0 +1,75 @@
+GET http://127.0.0.1:5000/stores/
+###
+POST http://127.0.0.1:5000/stores/
+Content-Type: application/json
+
+{
+    "name": "Desk"
+}
+
+###
+# Item
+GET http://127.0.0.1:5000/items/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjk3NTQ3MTIzLCJqdGkiOiJhYTFlZDZiNC04MTBiLTRhZmEtYTZkYS0zYTM5NWMyZDIxMGYiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7InVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJ1c2VyIn0sIm5iZiI6MTY5NzU0NzEyMywiZXhwIjoxNjk3NTQ4MDIzLCJ1c2VybmFtZSI6InVzZXIiLCJyb2xlIjoidXNlciIsImlkIjpudWxsfQ.C5T4JMBYaC20RMOdTgTm-mWDvCdfchSBjyVrWHJSSws
+###
+
+GET http://127.0.0.1:5000/items/1
+###
+POST http://127.0.0.1:5000/items/
+Content-Type: application/json
+
+{
+    "name": "Desk",
+    "price": "23.4",
+    "store_id": 1
+}
+###
+
+# User 
+POST http://127.0.0.1:5000/register/
+Content-Type: application/json
+
+{
+    "username": "maunghtay",
+    "password": "maunghtay123",
+    "role": "admin"
+}
+###
+POST http://127.0.0.1:5000/register/
+Content-Type: application/json
+
+{
+    "username": "user",
+    "password": "user123",
+    "role": "user"
+}
+
+###
+GET http://127.0.0.1:5000/user/1
+
+###
+POST  http://127.0.0.1:5000/login
+Content-Type: application/json
+
+{
+    "username": "maunghtay",
+    "password": "maunghtay123"
+}
+###
+POST  http://127.0.0.1:5000/login
+Content-Type: application/json
+
+{
+    "username": "user",
+    "password": "user123"
+}
+
+###
+POST http://127.0.0.1:5000/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjk3NTQ4MTMxLCJqdGkiOiIwOWYyZmVkOS1hZDk1LTQzOWUtODc2OC1hYjVjODQ0YjE3NTUiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7InVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJ1c2VyIn0sIm5iZiI6MTY5NzU0ODEzMSwiZXhwIjoxNjk3NTQ5MDMxLCJ1c2VybmFtZSI6InVzZXIiLCJyb2xlIjoidXNlciIsImlkIjpudWxsfQ.otsmMeUdHjnjCjInOXDWMccbTjv6Hhx-jC-MZIE5Ef4
+
+###
+POST http://127.0.0.1:5000/refresh
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NzU0ODcyNCwianRpIjoiMzRkZDhmNmUtNjg5Mi00OThhLWFlZWYtZmQyYTdkMzczZDdiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6InVzZXIiLCJyb2xlIjoidXNlciIsImlkIjoyfSwibmJmIjoxNjk3NTQ4NzI0LCJleHAiOjE2OTc1NDk2MjQsInVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJ1c2VyIiwiaWQiOjJ9.ncWqKcY-bwqJFcwyGkfWzGmx4ObUgOh49BEn8o9fORs
+
+
