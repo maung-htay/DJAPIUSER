@@ -15,8 +15,10 @@ import models
 from resources.store import blp as StoreBlueprint
 from resources.item import blp as ItemBlueprint
 from resources.user import blp as UserBlueprint
-
-
+from resources.address import blp as AddressBlueprint
+from resources.author import blp as AuthorBlueprint
+from  resources.country import blp as CountryBlueprint
+from resources.book import blp as BookBlueprint
 
 def create_app(db_url=None):
     app = Flask(__name__)
@@ -98,5 +100,9 @@ def create_app(db_url=None):
     api.register_blueprint(StoreBlueprint)
     api.register_blueprint(ItemBlueprint)
     api.register_blueprint(UserBlueprint)
+    api.register_blueprint(AddressBlueprint)
+    api.register_blueprint(AuthorBlueprint)
+    api.register_blueprint(CountryBlueprint)
+    api.register_blueprint(BookBlueprint)
 
     return app

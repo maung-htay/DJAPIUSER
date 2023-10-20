@@ -10,7 +10,7 @@ Content-Type: application/json
 ###
 # Item
 GET http://127.0.0.1:5000/items/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjk3NTQ3MTIzLCJqdGkiOiJhYTFlZDZiNC04MTBiLTRhZmEtYTZkYS0zYTM5NWMyZDIxMGYiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7InVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJ1c2VyIn0sIm5iZiI6MTY5NzU0NzEyMywiZXhwIjoxNjk3NTQ4MDIzLCJ1c2VybmFtZSI6InVzZXIiLCJyb2xlIjoidXNlciIsImlkIjpudWxsfQ.C5T4JMBYaC20RMOdTgTm-mWDvCdfchSBjyVrWHJSSws
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNjk3NzA5MzI1LCJqdGkiOiI5OGY0Y2VjNy1jYjI3LTQ1MmYtOGEyMC1iNDQ4MzI3OTE2OTEiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjp7InVzZXJuYW1lIjoibWF1bmdodGF5Iiwicm9sZSI6ImFkbWluIiwiaWQiOjF9LCJuYmYiOjE2OTc3MDkzMjUsImV4cCI6MTY5NzcxMjkyNSwidXNlcm5hbWUiOiJtYXVuZ2h0YXkiLCJyb2xlIjoiYWRtaW4iLCJpZCI6MX0.dJtOuXDRhJeJR-eHRVzwIxUpm-TGpg5r4jIsiKxcPa8
 ###
 
 GET http://127.0.0.1:5000/items/1
@@ -73,3 +73,47 @@ POST http://127.0.0.1:5000/refresh
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5NzU0ODcyNCwianRpIjoiMzRkZDhmNmUtNjg5Mi00OThhLWFlZWYtZmQyYTdkMzczZDdiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VybmFtZSI6InVzZXIiLCJyb2xlIjoidXNlciIsImlkIjoyfSwibmJmIjoxNjk3NTQ4NzI0LCJleHAiOjE2OTc1NDk2MjQsInVzZXJuYW1lIjoidXNlciIsInJvbGUiOiJ1c2VyIiwiaWQiOjJ9.ncWqKcY-bwqJFcwyGkfWzGmx4ObUgOh49BEn8o9fORs
 
 
+### 
+# Address
+POST  http://127.0.0.1:5000/address/
+Content-Type: application/json
+
+{
+    "street": "Takahatafudo",
+    "city": "Hino"
+}
+###
+GET  http://127.0.0.1:5000/address/
+###
+# Author 
+POST  http://127.0.0.1:5000/author/
+Content-Type: application/json
+
+{
+    "name": "Maung Htay",
+    "address_id": 2
+}
+####
+GET  http://127.0.0.1:5000/author/
+###
+
+# Country
+POST  http://127.0.0.1:5000/country/
+Content-Type: application/json
+
+{
+    "name": "China"
+}
+
+###
+POST  http://127.0.0.1:5000/book/
+Content-Type: application/json
+
+{
+    "name": "Java Book",
+    "author_id": 1,
+    "country_id": [
+        1,2
+    ]
+    
+}
