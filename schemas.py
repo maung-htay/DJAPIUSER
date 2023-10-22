@@ -1,9 +1,5 @@
 from marshmallow import Schema, fields
 
-
-from marshmallow import Schema, fields
-
-
 class PlainItemSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str(required=True)
@@ -82,5 +78,5 @@ class BookSchema(PlainBookSchema):
     # author_id = fields.Int(required=True, load_only=True)
     author_id = fields.Int(required=True, load_only=True)
     author = fields.Nested(PlainAuthorSchema(), dump_only=True)
-    countries = fields.Nested(PlainCountrySchema(), dump_only=True)
+    countries = fields.List(fields.Nested(PlainCountrySchema()), dump_only=True)
     country_id = fields.List(fields.Int(), load_only=True)

@@ -110,10 +110,12 @@ POST  http://127.0.0.1:5000/book/
 Content-Type: application/json
 
 {
-    "name": "Java Book",
+    "name": "Python Book",
     "author_id": 1,
     "country_id": [
         1,2
     ]
     
 }
+###
+GET  http://127.0.0.1:5000/book/
